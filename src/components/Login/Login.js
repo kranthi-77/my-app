@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import './index.css'
+import axios from 'axios';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -13,11 +14,12 @@ function Login() {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://nviribackend.onrender.com/login/user', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password }),
-            });
+            //const response = await fetch('https://nviribackend.onrender.com/login/user', {
+            //    method: 'POST',
+            //    headers: { 'Content-Type': 'application/json' },
+            //    body: JSON.stringify({ email, password }),
+            //});
+            const response = await axios.post('http://localhost:3000/login')
             const data = await response.json();
 
             if (response.ok) {
